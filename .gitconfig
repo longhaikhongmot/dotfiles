@@ -1,0 +1,8 @@
+[user]
+	name = long
+	email = 78641196+tatsuxyz@users.noreply.github.com
+	username = tatsuxyz
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
