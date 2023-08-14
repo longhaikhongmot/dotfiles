@@ -1,0 +1,8 @@
+#!/bin/sh
+
+alias \
+	v="$EDITOR" \
+	tf="terraform" \
+	dc="docker-compose"
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
