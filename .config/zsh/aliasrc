@@ -2,6 +2,9 @@
 
 alias \
 	v="$EDITOR" \
+	ll='ls -lG'
+
+alias \
 	tf="terraform" \
 	dc="docker-compose"
 
