@@ -59,10 +59,9 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/loc
 # Add path for PyEnv and autocompletion
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-# Config env to make fnm and its completion work
-eval "$(fnm env --use-on-cd)"
-fpath+="$XDG_CONFIG_HOME/zsh/completions/_fnm"
-compinit
+# Config env to make fnm work
+export PATH="/Users/longnguyen23/.local/share/fnm:$PATH"
+eval "`fnm env`"
 
 ## PLUGINS
 # this must be in the end of file
@@ -71,3 +70,4 @@ source $HOME/.local/plugin/powerlevel10k/powerlevel10k.zsh-theme
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

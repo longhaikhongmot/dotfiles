@@ -2,6 +2,7 @@
 
 typeset -U PATH path
 
+export OS="$(uname -s)"
 export EDITOR="nvim"
 export BROWSER="firefox"
 
