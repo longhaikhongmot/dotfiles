@@ -8,5 +8,5 @@ if [ "$OS" = "Darwin" ]; then
 	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 else
 	source "/usr/share/fzf/key-bindings.zsh"
-	source "/usr/share/fzf/completion.bash"
+	source "/usr/share/fzf/completion.zsh"
 fi
