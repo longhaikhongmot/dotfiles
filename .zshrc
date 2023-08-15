@@ -60,7 +60,7 @@ if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/loc
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # Config env to make fnm work
-export PATH="/Users/longnguyen23/.local/share/fnm:$PATH"
+export PATH="$XDG_DATA_HOME/fnm:$PATH"
 eval "`fnm env`"
 
 ## PLUGINS
