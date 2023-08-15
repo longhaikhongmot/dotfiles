@@ -9,3 +9,4 @@ if [ "$OS" = "Darwin" ]; then
 else
 	source "/usr/share/fzf/key-bindings.zsh"
 	source "/usr/share/fzf/completion.bash"
+fi
