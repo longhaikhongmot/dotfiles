@@ -66,8 +66,13 @@ eval "`fnm env`"
 ## PLUGINS
 # this must be in the end of file
 # /Users/longnguyen23/.local/plugin/powerlevel10k
-source $HOME/.local/plugin/powerlevel10k/powerlevel10k.zsh-theme
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $HOME/.local/plugin/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+if [ "$OS" = "Darwin" ]; then
+	source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+else
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-autosuggestion.zsh 2>/dev/null
+fi
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 2>/dev/null
 
