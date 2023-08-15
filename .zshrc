@@ -72,7 +72,7 @@ if [ "$OS" = "Darwin" ]; then
 	source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 else
 	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-autosuggestion.zsh 2>/dev/null
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 fi
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 2>/dev/null
 
