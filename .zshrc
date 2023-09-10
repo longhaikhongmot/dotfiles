@@ -62,6 +62,9 @@ eval "$(pyenv init -)"
 # Config env to make fnm work
 export PATH="$XDG_DATA_HOME/fnm:$PATH"
 eval "`fnm env`"
+# bun completions
+[ -s "/Users/longnguyen23/.bun/_bun" ] && source "/Users/longnguyen23/.bun/_bun"
+
 
 ## PLUGINS
 # this must be in the end of file
@@ -75,3 +78,4 @@ else
 	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
