@@ -1,8 +1,13 @@
 [user]
-	name = long
-	email = 78641196+tatsuxyz@users.noreply.github.com
+	name = tatsu
+	email = git@tatsu.simplelogin.com
 	username = tatsuxyz
 [init]
 	defaultBranch = main
 [core]
-	editor = nvim
+	editor = /usr/local/bin/nvim
+[alias]
+	lg = log --color --graph --pretty=\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit
+	adog = log --all --decorate --oneline --graph
+	b = branch -vv
+	st = status --short

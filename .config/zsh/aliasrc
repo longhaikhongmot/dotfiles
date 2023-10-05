@@ -2,7 +2,7 @@
 
 alias \
 	v="$EDITOR" \
-	ll='ls -lG'
+	ll='ls -lSGh'
 
 alias \
 	tf="terraform" \
