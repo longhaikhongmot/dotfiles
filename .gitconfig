@@ -11,3 +11,5 @@
 	adog = log --all --decorate --oneline --graph
 	b = branch -vv
 	st = status --short
+[push]
+	autoSetupRemote = true
