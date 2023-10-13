@@ -49,7 +49,10 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 ## ALIAS
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliasrc"
+# alias file is public config for whoever use this dotfiles
+# myalias is custom alias file that wouldn't push to public repo
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/alias" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/alias"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/myalias" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/myalias"
 
 ## OTHER CONFIGS
 # The next line updates PATH for the Google Cloud SDK.

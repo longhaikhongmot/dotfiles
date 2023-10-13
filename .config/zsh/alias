@@ -1,0 +1,12 @@
+#!/bin/sh
+
+alias \
+	v="$EDITOR" \
+	k="kubectl"
+
+alias \
+	ll='ls -lSGh'
+	tf="terraform" \
+	dc="docker-compose" \
+
+alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
