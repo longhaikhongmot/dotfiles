@@ -8,12 +8,9 @@ Not a lot, I'd like to keep my workflow minimal and efficient.
 - [iTerm2](https://iterm2.com): Main Terminal
 - [Zsh](https://www.zsh.org): Unix Shell
     - [Powerlevel10k](https://github.com/romkatv/powerlevel10k): Use to change PS1
-    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): Fish-like autocomplete
-    - [zsh-syntax-highlightings](https://github.com/zsh-users/zsh-syntax-highlighting): Fish-like highlighting
+    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions): Autocomplete
+    - [zsh-syntax-highlightings](https://github.com/zsh-users/zsh-syntax-highlighting): Syntax highlighting
 
 ## FAQ
 **No Zsh plugin manager?** \
-Why `oh-my-zsh` when you can simply source your plugin in `.zshrc`?
-
-**Why VSCode?** \
-I know it's electron but it's the only tool can get everything simple and right.
+Why `oh-my-zsh` when you can simply source your plugin in `.zshrc`
