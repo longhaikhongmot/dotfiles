@@ -5,8 +5,8 @@ alias \
 	k="kubectl"
 
 alias \
-	ll='ls -lSGh'
+	ll='ls -lSGh' \
 	tf="terraform" \
-	dc="docker-compose" \
+	dc="docker-compose"
 
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
