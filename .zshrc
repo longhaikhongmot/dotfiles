@@ -55,10 +55,6 @@ bindkey -M visual '^[[P' vi-delete
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/myalias" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/myalias"
 
 ## OTHER CONFIGS
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/lib/google-cloud-sdk/path.zsh.inc'; fi
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/lib/google-cloud-sdk/completion.zsh.inc'; fi
 # Add path for PyEnv and autocompletion
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
