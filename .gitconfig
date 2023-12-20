@@ -1,0 +1,15 @@
+[user]
+	name = Tatsu
+	email = git@tatsu.simplelogin.com
+	username = tatsupro
+[init]
+	defaultBranch = main
+[core]
+	editor = /usr/local/bin/nvim
+[alias]
+	ll = log --color --graph --pretty=\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit
+	adog = log --all --decorate --oneline --graph
+	b = branch -vv
+	st = status --short
+[push]
+	autoSetupRemote = true

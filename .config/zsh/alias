@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Manage dotfiles
+alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias \
+	v="$EDITOR" \
+	k="kubectl"
+alias \
+	ll="ls -lSGh" \
+	tf="terraform" \
+	dc="docker-compose"
+
+# Git
+alias \
+	g="git" \
+	gc="git clone" \
+	gf="git fetch" \
+	gps="git push" \
+	gpl="git pull" \
+	gpso="git push origin" \
+	gplo="git pull origin" \
+	gpsm="git push origin main" \
+	gplm="git pull origin main" \
+	gb="git branch" \
+	gch="git checkout" \
+	gcb="git checkout -b" \
+	gcm="git checkout main" \
+	gl="git log" \
+	gll="git ll" \
+	gs="git stash" \
+	gsa="git stash apply" \
+	gsd="git stash drop"
+
+# Git add & commit
+gac() {
+	if [ -n "$1" ]; then
+		git add . && git commit -m "$1"
+	else
+		echo "No message provided, commit will not process"
+	fi
+}
