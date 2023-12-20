@@ -10,3 +10,12 @@ alias \
 	dc="docker-compose"
 
 alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+# Git
+gac() {
+	if [ -n "$1" ]; then
+		git add . && git commit -m "$1"
+	else
+		echo "No message provided, commit will not process"
+	fi
+}

@@ -67,7 +67,8 @@ export PATH="$XDG_DATA_HOME/fnm:$PATH"
 eval "`fnm env`"
 # bun completions
 [ -s "/Users/longnguyen23/.bun/_bun" ] && source "/Users/longnguyen23/.bun/_bun"
-
+# lfcd
+[ -f "$HOME/.config/lf/lfcd.sh" ] && source "$HOME/.config/lf/lfcd.sh"
 
 ## PLUGINS
 # this must be in the end of file
