@@ -29,6 +29,7 @@ alias \
 	gl="git log" \
 	gll="git ll" \
 	gs="git stash" \
+	gsl="git stash list" \
 	gsa="git stash apply" \
 	gsd="git stash drop"
 
