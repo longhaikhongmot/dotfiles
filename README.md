@@ -4,6 +4,11 @@ Your dotfiles are how you personalize your system. These are mine and it works w
 
 ## Setup
 
+Requirement:
+
+- `git` and `curl` is already installed.
+
+
 Quick setup:
 
 ```sh
