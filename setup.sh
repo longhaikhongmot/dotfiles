@@ -13,4 +13,5 @@ cat > "$DOTFILES_DIR/info/sparse-checkout" << EOM
 EOM
 
 $DOT branch -M main
+$DOT remote add origin $DOTFILES_REPO 
 $DOT pull origin main
