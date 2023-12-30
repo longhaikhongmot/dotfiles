@@ -1,5 +1,5 @@
 # APPEARANCE
-autoload -U colors && colors	# load colors
+autoload -U colors && colors # Load colors
 
 # TWEAKS
 # Basic auto/tab complete:
