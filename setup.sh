@@ -11,6 +11,7 @@ cat > "$DOTFILES_DIR/info/sparse-checkout" << EOM
 !LICENSE
 !setup.sh
 EOM
+$DOT config core.sparsecheckout true
 
 $DOT branch -M main
 $DOT remote add origin $DOTFILES_REPO 
