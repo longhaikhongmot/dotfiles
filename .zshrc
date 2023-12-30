@@ -41,10 +41,10 @@ bindkey -M visual '^[[P' vi-delete
 
 # Sourcing the configuration
 # The alias file is public alias for whoever use this dotfiles
-[ -f "${$HOME/.config}/zsh/alias" ] && source "${$HOME/.config}/zsh/alias"
+[ -f "$HOME/.config/zsh/alias" ] && source "$HOME/.config/zsh/alias"
 # Use myrc to add custom run commands that wouldn't push to public repo
-[ -f "${$HOME/.config}/zsh/myrc" ] && source "${$HOME/.config}/zsh/myrc"
+[ -f "$HOME/.config/zsh/myrc" ] && source "$HOME/.config/zsh/myrc"
 # Use myenv to add custom user's variables
-[ -f "${$HOME/.config}/zsh/myenv" ] && source "${$HOME/.config}/zsh/myenv"
+[ -f "$HOME/.config/zsh/myenv" ] && source "$HOME/.config/zsh/myenv"
 # and myalias is custom alias file that wouldn't push to public repo
-[ -f "${$HOME/.config}/zsh/myalias" ] && source "${$HOME/.config}/zsh/myalias"
+[ -f "$HOME/.config/zsh/myalias" ] && source "$HOME/.config/zsh/myalias"
