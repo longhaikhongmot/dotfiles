@@ -6,7 +6,8 @@ alias dot="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias \
 	v="$EDITOR" \
 	k="kubectl" \
-	kns="kubens"
+	kns="kubens" \
+	kctx="kubectx"
 alias \
 	ll="ls -lSGh" \
 	tf="terraform" \
