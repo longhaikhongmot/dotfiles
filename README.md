@@ -10,5 +10,4 @@ Quick setup:
 curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/setup.sh | sh
 ```
 
-The script also can read the first argument from the command line to change the default remote dotfiles repository.
 

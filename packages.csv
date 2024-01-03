@@ -6,5 +6,6 @@ git,Version control system
 neovim,Text editor
 lf,File manager
 docker,Container tool
+docker-compose,Alternate Docker client
 kubectl,Kubernetes command line tool
-kubectx,Kubernetes Utility
+kubectx,Kubernetes utility

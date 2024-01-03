@@ -1,11 +1,12 @@
 #!/bin/sh
 
-DOTFILES_REPO="${1:-"https://github.com/tatsupro/dotfiles.git"}"
+DOTFILES_REPO="https://github.com/tatsupro/dotfiles.git"
+PACKAGES_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/packages.csv"
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Installing packages
 if type pacman >/dev/null; then
-    tail -n +2 packages.csv | cut -d ',' -f1 | xargs sudo pacman -Syu
+    curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu
 fi
 
 # Change the default shell
