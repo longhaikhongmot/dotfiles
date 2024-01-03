@@ -6,7 +6,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 
 # Installing packages
 if type pacman >/dev/null; then
-    curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu
+    curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman --noconfirm -Syu
 fi
 
 # Change the default shell
