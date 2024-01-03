@@ -1,4 +1,7 @@
 # APPEARANCE
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 autoload -U colors && colors # Load colors
 
 # TWEAKS
@@ -88,3 +91,4 @@ CUSTOMRC_PATH="$HOME/.config/zsh/custom"
 [ -f $ZSH_SYNTAX_HIGHLIGHTING_PATH ] && source $ZSH_SYNTAX_HIGHLIGHTING_PATH
 [ -f $ZSH_AUTOSUGGESTIONS_PATH ] && source $ZSH_AUTOSUGGESTIONS_PATH
 [ -f $CUSTOMRC_PATH ] && source $CUSTOMRC_PATH
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
