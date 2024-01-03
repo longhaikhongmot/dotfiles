@@ -78,5 +78,5 @@ gac() {
 }
 
 # SOURCING
-# Use myrc to add custom run commands that wouldn't push to public repo
+# Add custom run commands that wouldn't push to public repo
 [ -f "$HOME/.config/zsh/custom" ] && source "$HOME/.config/zsh/custom"
