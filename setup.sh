@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OS="uname -s"
+OS=$(uname -s)
 DOTFILES_REPO="https://github.com/tatsupro/dotfiles.git"
 PACKAGES_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/packages.csv"
 DOTFILES_DIR="$HOME/.dotfiles"
