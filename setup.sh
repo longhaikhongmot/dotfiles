@@ -5,6 +5,9 @@ DOTFILES_REPO="https://github.com/tatsupro/dotfiles.git"
 PACKAGES_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/packages.csv"
 DOTFILES_DIR="$HOME/.dotfiles"
 
+# Hello message
+echo "Tatsu bootstraping script is running, it will ask for root permission for some process..."
+
 # Installing packages
 if type pacman >/dev/null; then
     curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman --noconfirm -Syu
@@ -33,3 +36,9 @@ $DOT config core.sparsecheckout true
 $DOT branch -M main
 $DOT remote add origin $DOTFILES_REPO 
 $DOT pull origin main
+
+# Completed message
+echo """
+The script completely executed, you'll need to enter new shell to use it
+by running: exec zsh
+"""
