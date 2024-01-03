@@ -39,12 +39,44 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
-# Sourcing the configuration
-# The alias file is public alias for whoever use this dotfiles
-[ -f "$HOME/.config/zsh/alias" ] && source "$HOME/.config/zsh/alias"
+# ALIAS
+alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias \
+	v="nvim" \
+	k="kubectl" \
+	kns="kubens" \
+	kctx="kubectx" \
+	ll="ls -lSGh" \
+	tf="terraform" \
+	dc="docker-compose"
+alias \
+	g="git" \
+	gc="git clone" \
+	gf="git fetch" \
+	gps="git push" \
+	gpl="git pull" \
+	gpso="git push origin" \
+	gplo="git pull origin" \
+	gpsm="git push origin main" \
+	gplm="git pull origin main" \
+	gb="git branch" \
+	gch="git checkout" \
+	gcb="git checkout -b" \
+	gcm="git checkout main" \
+	gl="git log" \
+	gll="git ll" \
+	gs="git stash" \
+	gsl="git stash list" \
+	gsa="git stash apply" \
+	gsd="git stash drop"
+gac() {
+	if [ -n "$1" ]; then
+		git add . && git commit -m "$1"
+	else
+		echo "No message provided, commit will not process"
+	fi
+}
+
+# SOURCING
 # Use myrc to add custom run commands that wouldn't push to public repo
-[ -f "$HOME/.config/zsh/myrc" ] && source "$HOME/.config/zsh/myrc"
-# Use myenv to add custom user's variables
-[ -f "$HOME/.config/zsh/myenv" ] && source "$HOME/.config/zsh/myenv"
-# and myalias is custom alias file that wouldn't push to public repo
-[ -f "$HOME/.config/zsh/myalias" ] && source "$HOME/.config/zsh/myalias"
+[ -f "$HOME/.config/zsh/custom" ] && source "$HOME/.config/zsh/custom"
