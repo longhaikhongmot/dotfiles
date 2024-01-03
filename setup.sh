@@ -13,8 +13,8 @@ fi
 # Setup new shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/powerlevel10k"
 if [[ $OS == "Linux" ]]; then
-   ln -s /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-   ln -s /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-autosuggestions.plugin.zsh
+   ln -sf /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+   ln -sf /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-autosuggestions.plugin.zsh
 fi
 chsh -s $(which zsh)
 
