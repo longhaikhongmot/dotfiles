@@ -44,8 +44,8 @@ alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias \
 	v="nvim" \
 	k="kubectl" \
-	kns="kubens" \
-	kctx="kubectx" \
+	kn="kubens" \
+	kc="kubectx" \
 	ll="ls -lSGh" \
 	tf="terraform" \
 	dc="docker-compose"
