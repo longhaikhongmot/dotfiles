@@ -83,7 +83,7 @@ gac() {
 # SOURCING
 # Add custom run commands that wouldn't push to public repo
 POWERLEVEL10K_PATH="$HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
-ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 ZSH_AUTOSUGGESTIONS_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 CUSTOMRC_PATH="$HOME/.config/zsh/custom"
 [ -f $POWERLEVEL10K_PATH ] && source $POWERLEVEL10K_PATH
