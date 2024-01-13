@@ -15,12 +15,8 @@ fi
 
 # Setup new shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/powerlevel10k"
-mkdir -p /home/tatsu/.local/share/zsh/plugins/zsh-syntax-highlighting
-mkdir -p /home/tatsu/.local/share/zsh/plugins/zsh-autosuggestions
-if [ $OS = "Linux" ]; then
-   ln -sf /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-   ln -sf /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh $HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-autosuggestions.plugin.zsh
-fi
+git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 sudo chsh -s $(which zsh) $(whoami)
 
 # Setup the dotfiles
