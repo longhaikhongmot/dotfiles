@@ -49,9 +49,6 @@ bindkey -M visual '^[[P' vi-delete
 alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias \
 	v="nvim" \
-	k="kubectl" \
-	kn="kubens" \
-	kc="kubectx" \
 	ll="ls -lSGh" \
 	tf="terraform" \
 	dc="docker-compose"
@@ -75,6 +72,29 @@ alias \
 	gsl="git stash list" \
 	gsa="git stash apply" \
 	gsd="git stash drop"
+alias \
+	k="kubectl" \
+  kg="kubectl get" \
+  kd="kubectl describe" \
+  kl="kubectl logs" \
+  ke="kubectl explain" \
+	kn="kubens" \
+	kc="kubectx" \
+  kgp="kubectl get pod" \
+  kgs="kubectl get service" \
+  kgd="kubectl get deploy" \
+  kgpa="kubectl get pods -A" \
+  kgsa="kubectl get secrets -A" \
+  kgna="kubectl get nodes -A" \
+  kgrc="kubectl get rc" \
+  kgn="kubectl get node" \
+  kgs="kubectl get secret" \
+  kdp="kubectl describe pod" \
+  kds="kubectl describe service" \
+  kdd="kubectl describe deploy" \
+  keit="kubectl exec -it" \
+  ktop="kubectl top nodes" \
+  kevent="kubectl get events"
 gac() {
 	if [ -n "$1" ]; then
 		git add . && git commit -m "$1"
