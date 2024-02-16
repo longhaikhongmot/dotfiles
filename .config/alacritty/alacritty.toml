@@ -1,6 +1,6 @@
 # Font
 [font]
-size = 14.0
+size = 12.0
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -50,7 +50,6 @@ white = "0xb1bac4"
 # Tweaks
 [window]
 title = "tatsu"
-opacity = 0.9
-blur = true
-startup_mode = "Maximized"
-
+decorations_theme_variant = "Dark"
+# opacity = 0.9
+# blur = true
