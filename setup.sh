@@ -9,7 +9,7 @@ DOTFILES_DIR="$HOME/.dotfiles"
 echo "Tatsu bootstraping script is running, it will ask for root permission for some process..."
 
 # Installing packages
-if command -v zypper &>/dev/null; then
+if command -v pacman &>/dev/null; then
     curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
 fi
 
