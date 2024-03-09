@@ -10,8 +10,7 @@ echo "Tatsu bootstraping script is running, it will ask for root permission for 
 
 # Installing packages
 if command -v zypper &>/dev/null; then
-    sudo zypper update
-    curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo zypper install -y
+    curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
 fi
 
 # Setup new shell
