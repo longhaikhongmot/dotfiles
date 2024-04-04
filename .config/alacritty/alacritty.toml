@@ -51,5 +51,4 @@ white = "0xb1bac4"
 [window]
 title = "tatsu"
 decorations_theme_variant = "Dark"
-# opacity = 0.9
-# blur = true
+option_as_alt = "Both"
