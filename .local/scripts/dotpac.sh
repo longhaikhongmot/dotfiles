@@ -16,7 +16,6 @@ add command usage:
 }
 
 dotpac() {
-    set -x
     pacman_list="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/pacman.csv"
     homebrew_list="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/homebrew.csv"
 
