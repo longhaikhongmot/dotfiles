@@ -26,7 +26,6 @@ cat > "$DOTFILES_DIR/info/sparse-checkout" << EOM
 !README.md
 !LICENSE
 !setup.sh
-!packages.csv
 EOM
 $DOT config core.sparsecheckout true
 $DOT branch -M main

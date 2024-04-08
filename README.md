@@ -7,7 +7,5 @@ Your dotfiles are how you personalize your system.
 Quick setup:
 
 ```sh
-curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/setup.sh | sh
+curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/scripts/setup.sh | sh
 ```
-
-
