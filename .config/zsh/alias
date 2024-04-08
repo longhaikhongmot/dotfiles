@@ -1,0 +1,62 @@
+#!/bin/sh
+
+alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias \
+    v="nvim" \
+    ll="ls -lSGh" \
+    tf="terraform" \
+    dc="docker-compose"
+
+alias \
+    g="git" \
+    gc="git clone" \
+    gf="git fetch" \
+    gps="git push" \
+    gpl="git pull" \
+    gpso="git push origin" \
+    gplo="git pull origin" \
+    gpsm="git push origin main" \
+    gplm="git pull origin main" \
+    gb="git branch" \
+    gch="git checkout" \
+    gcb="git checkout -b" \
+    gcm="git checkout main" \
+    gl="git log" \
+    gll="git ll" \
+    gs="git stash" \
+    gsl="git stash list" \
+    gsa="git stash apply" \
+    gsd="git stash drop"
+
+alias \
+    k="kubectl" \
+    kg="kubectl get" \
+    kd="kubectl describe" \
+    kl="kubectl logs" \
+    ke="kubectl explain" \
+    kn="kubens" \
+    kc="kubectx" \
+    kgp="kubectl get pod" \
+    kgs="kubectl get service" \
+    kgd="kubectl get deploy" \
+    kgpa="kubectl get pods -A" \
+    kgsa="kubectl get secrets -A" \
+    kgna="kubectl get nodes -A" \
+    kgrc="kubectl get rc" \
+    kgn="kubectl get node" \
+    kgs="kubectl get secret" \
+    kdp="kubectl describe pod" \
+    kds="kubectl describe service" \
+    kdd="kubectl describe deploy" \
+    keit="kubectl exec -it" \
+    ktop="kubectl top nodes" \
+    kevent="kubectl get events"
+
+gac() {
+    if [ -n "$1" ]; then
+        git add . && git commit -m "$1"
+    else
+        echo "No message provided, commit will not process"
+    fi
+}
