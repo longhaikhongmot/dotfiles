@@ -49,14 +49,15 @@ ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/fast-syntax-highlig
 ZSH_AUTOSUGGESTIONS_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ALIASRC_PATH="$HOME/.config/zsh/alias"
 CUSTOMRC_PATH="$HOME/.config/zsh/custom"
-LFCD="$HOME/.config/lf/lfcd.sh"
+
 
 [ -f $POWERLEVEL10K_PATH ] && source $POWERLEVEL10K_PATH
 [ -f $ZSH_SYNTAX_HIGHLIGHTING_PATH ] && source $ZSH_SYNTAX_HIGHLIGHTING_PATH
 [ -f $ZSH_AUTOSUGGESTIONS_PATH ] && source $ZSH_AUTOSUGGESTIONS_PATH
 [ -f $CUSTOMRC_PATH ] && source $CUSTOMRC_PATH
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi
+[ -f $ALIASRC_PATH ] && source $ALIASRC_PATH
+[ -f $HOME/.p10k.zsh ] && source $HOME/.p10k.zsh
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+for custom_scripts in $HOME/.local/scripts/*.sh; do
+    source "$custom_scripts"
+done
