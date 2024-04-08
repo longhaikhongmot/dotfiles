@@ -58,4 +58,6 @@ CUSTOMRC_PATH="$HOME/.config/zsh/custom"
 [ -f $ALIASRC_PATH ] && source $ALIASRC_PATH
 [ -f $HOME/.p10k.zsh ] && source $HOME/.p10k.zsh
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-source $HOME/.local/scripts/*.sh
+for custom_scripts in $HOME/.local/scripts/*.sh; do
+    source "$custom_scripts"
+done
