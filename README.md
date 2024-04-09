@@ -1,4 +1,4 @@
-# tatsu does dotfiles
+# tats does dotfiles
 
 Your dotfiles are how you personalize your system.
 
