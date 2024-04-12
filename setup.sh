@@ -2,14 +2,24 @@
 
 OS=$(uname -s)
 DOTFILES_REPO="https://github.com/tatsupro/dotfiles.git"
-PACKAGES_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/packages.csv"
+PACMAN_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/pacman.csv"
+HOMEBREW_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/homebrew.csv"
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Hello message
 echo "Tatsu bootstraping script is running, it will ask for root permission for some process..."
 
 # Installing packages
-curl -s $PACKAGES_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
+if type pacman >/dev/null; then
+  curl -s $PACMAN_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
+  return 0
+fi
+if type brew >/dev/null; then
+  brew update && brew upgrade
+  curl -s $HOMEBREW_LIST | tail -n +2 | cut -d ',' -f1 | xargs brew install
+  return 0
+fi
+
 
 # Setup new shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/powerlevel10k"
