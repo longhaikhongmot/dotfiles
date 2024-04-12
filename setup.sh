@@ -12,12 +12,10 @@ echo "Tatsu bootstraping script is running, it will ask for root permission for 
 # Installing packages
 if type pacman >/dev/null; then
   curl -s $PACMAN_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
-  return 0
 fi
 if type brew >/dev/null; then
   brew update && brew upgrade
   curl -s $HOMEBREW_LIST | tail -n +2 | cut -d ',' -f1 | xargs brew install
-  return 0
 fi
 
 
