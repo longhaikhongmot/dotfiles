@@ -6,6 +6,9 @@ Your dotfiles are how you personalize your system.
 
 Quick setup:
 
+### Prerequirement
+- `curl`, `git` installed
+
 ```sh
 curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/setup.sh | sh
 ```
