@@ -12,3 +12,7 @@ Quick setup:
 ```sh
 curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/setup.sh | sh
 ```
+
+### Documentation
+
+[Read the docs here](https://tatsupro.github.io/dotfiles)
