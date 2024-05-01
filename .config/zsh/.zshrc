@@ -1,12 +1,14 @@
 # APPEARANCE
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
 autoload -U colors && colors # Load colors
 PS1="%B%{$fg[red]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[cyan]%} > "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
+
+# History in cache directory
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 
 # TWEAKS
 # Basic auto/tab complete:
@@ -48,20 +50,16 @@ bindkey -M visual '^[[P' vi-delete
 
 # SOURCING
 # Add custom run commands that wouldn't push to public repo
-POWERLEVEL10K_PATH="$HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme"
 ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 ZSH_AUTOSUGGESTIONS_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ALIASRC_PATH="$HOME/.config/zsh/alias"
 CUSTOMRC_PATH="$HOME/.config/zsh/custom"
 
-
-# [ -f $POWERLEVEL10K_PATH ] && source $POWERLEVEL10K_PATH
 [ -f $ZSH_SYNTAX_HIGHLIGHTING_PATH ] && source $ZSH_SYNTAX_HIGHLIGHTING_PATH
 [ -f $ZSH_AUTOSUGGESTIONS_PATH ] && source $ZSH_AUTOSUGGESTIONS_PATH
 [ -f $CUSTOMRC_PATH ] && source $CUSTOMRC_PATH
 [ -f $ALIASRC_PATH ] && source $ALIASRC_PATH
-# [ -f $HOME/.p10k.zsh ] && source $HOME/.p10k.zsh
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+# [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 for custom_scripts in $HOME/.local/scripts/*.sh; do
     source "$custom_scripts"
 done
