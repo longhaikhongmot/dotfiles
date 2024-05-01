@@ -1,0 +1,16 @@
+#!/bin/sh
+
+export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+
+unsetopt PROMPT_SP 2>/dev/null
+
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="st"
+export TERMINAL_PROG="st"
+export BROWSER="firefox"
+
+# Configs
+export ZDOTDIR=$HOME/.config/zsh
+export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
