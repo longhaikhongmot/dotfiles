@@ -14,3 +14,5 @@ export BROWSER="firefox"
 export ZDOTDIR=$HOME/.config/zsh
 export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+export GOPATH="$HOME/.local/share/go"
+export GOMODCACHE="$HOME/.cache/go/mod"
