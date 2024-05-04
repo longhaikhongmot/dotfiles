@@ -5,11 +5,6 @@ setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
-# History in cache directory
-HISTSIZE=10000000
-SAVEHIST=10000000
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
-
 # TWEAKS
 # Basic auto/tab complete:
 autoload -U compinit
@@ -47,6 +42,12 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
+# History in cache directory
+HISTSIZE=10000000
+SAVEHIST=10000000
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+# Fuzzy Finder
+eval "$(fzf --zsh)"
 
 # SOURCING
 # Add custom run commands that wouldn't push to public repo
