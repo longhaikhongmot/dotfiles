@@ -61,3 +61,14 @@ gac() {
         echo "No message provided, commit will not process"
     fi
 }
+
+gcf() {
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+            fzf -d $((2 + $(wc -l <<<"$branches"))) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# Key binds
+bindkey -s "^B" "gcf^M" 
