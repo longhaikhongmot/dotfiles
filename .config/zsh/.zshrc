@@ -1,8 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # APPEARANCE
 autoload -U colors && colors # Load colors
-PS1="%B%{$fg[red]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[cyan]%} > "
 setopt autocd		# Automatically cd into typed directory.
-stty stop undef		# Disable ctrl-s to freeze terminal.
+stty stop undef > /dev/null 2>&1		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
 # TWEAKS
@@ -65,3 +72,7 @@ CUSTOMRC_PATH="$HOME/.config/zsh/custom"
 for custom_scripts in $HOME/.local/scripts/*.sh; do
     source "$custom_scripts"
 done
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
+source $HOME/.local/plugin/p10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

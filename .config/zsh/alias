@@ -72,3 +72,4 @@ gcf() {
 
 # Key binds
 bindkey -s "^B" "gcf^M" 
+bindkey -s "^F" "lfcd^M"
