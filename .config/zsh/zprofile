@@ -6,9 +6,9 @@ unsetopt PROMPT_SP 2>/dev/null
 
 # Default programs
 export EDITOR="nvim"
-export TERMINAL="st"
-export TERMINAL_PROG="st"
-export BROWSER="firefox"
+export TERMINAL="alacritty"
+export TERMINAL_PROG="alacritty"
+export BROWSER="brave"
 
 # Configs
 export ZDOTDIR=$HOME/.config/zsh

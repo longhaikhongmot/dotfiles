@@ -75,3 +75,8 @@ done
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
 source $HOME/.local/plugin/p10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# PFetch cuz it looks cool
+if command -v pfetch &> /dev/null; then
+    pfetch
+fi
