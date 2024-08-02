@@ -23,6 +23,7 @@ fi
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/powerlevel10k"
 git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "$HOME/.local/share/zsh/plugins/zsh-autocomplete" 
 sudo chsh -s $(which zsh) $(whoami)
 
 # Setup the dotfiles
