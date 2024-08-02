@@ -52,7 +52,7 @@ source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
 [ -f "$XDG_CONFIG_HOME/custom" ] && echo "#!/bin/sh" > "$XDG_CONFIG_HOME/zsh/custom"
 source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
 
-for custom_scripts in "$XDG_DATA_HOME/dotfiles/scripts/*.sh"; do
+for custom_scripts in $XDG_DATA_HOME/dotfiles/scripts/*.sh; do
     source "$custom_scripts"
 done
 
