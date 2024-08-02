@@ -1,3 +1,5 @@
+#!/bin/sh
+
 dotpac_manual() {
     echo "
 Dotpac is a helper shell function for managing pacman or homebrew packages in this dotfiles.
