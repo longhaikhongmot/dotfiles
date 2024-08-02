@@ -4,7 +4,7 @@ alias dot="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 alias \
     v="nvim" \
-    c="codium" \
+    c="code" \
     ll="ls -lSGh" \
     tf="terraform" \
     dc="docker-compose"
