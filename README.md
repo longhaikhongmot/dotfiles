@@ -1,4 +1,4 @@
-# tats does dotfiles
+# Long does dotfiles
 
 Your dotfiles are how you personalize your system.
 
