@@ -1,9 +1,12 @@
 #!/bin/sh
 
 OS=$(uname -s)
+XDG_DATA_HOME="$HOME/.local/share"
+BASE_PACKAGES_URL="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/share/dotfiles/packages"
+
 DOTFILES_REPO="https://github.com/tatsupro/dotfiles.git"
-PACMAN_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/pacman.csv"
-HOMEBREW_LIST="https://raw.githubusercontent.com/tatsupro/dotfiles/main/.local/packages/homebrew.csv"
+PACMAN_LIST="$BASE_PACKAGES_URL/pacman.csv"
+HOMEBREW_LIST="$BASE_PACKAGES_URL/homebrew.csv"
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Hello message
@@ -18,12 +21,11 @@ if command -v brew &> /dev/null; then
   curl -s $HOMEBREW_LIST | tail -n +2 | cut -d ',' -f1 | xargs brew install
 fi
 
-
 # Setup new shell
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/zsh/plugins/p10k"
-git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "$HOME/.local/share/zsh/plugins/zsh-autocomplete" 
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$XDG_DATA_HOME/zsh/plugins/p10k"
+git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$XDG_DATA_HOME/zsh/plugins/highlight"
+git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git "$XDG_DATA_HOME/zsh/plugins/autocomplete" 
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$XDG_DATA_HOME/zsh/plugins/autosuggestion"
 sudo chsh -s $(which zsh) $(whoami)
 
 # Setup the dotfiles

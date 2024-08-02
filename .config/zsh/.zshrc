@@ -1,8 +1,8 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # APPEARANCE
@@ -14,7 +14,6 @@ setopt interactive_comments
 # TWEAKS
 # Vi mode
 bindkey -v
-export KEYTIMEOUT=50
 bindkey -M viins 'jj' vi-cmd-mode
 # Change cursor shape for different vi modes
 function zle-keymap-select () {
@@ -31,6 +30,8 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt
+
+# KEYBIND
 # Edit line in vim with ctrl-e
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -39,23 +40,22 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 # Fuzzy Finder
 eval "$(fzf --zsh)"
-# Caching folder
-[ -f "$HOME/.local/cache/zsh" ] && mkdir -p "$HOME/.local/cache/zsh"
 
 # SOURCING
-# Add custom run commands that wouldn't push to public repo
-source "$HOME/.local/plugin/p10k/powerlevel10k.zsh-theme" 2>/dev/null
-source "$HOME/.config/zsh/.p10k.zsh" 2>/dev/null
-source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" 2>/dev/null
-source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autocomplete.plugin.zsh" 2>/dev/null
-source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" 2>/dev/null
-source "$HOME/.config/zsh/alias" 2>/dev/null
-source "$HOME/.config/zsh/custom" 2>/dev/null
-for custom_scripts in $HOME/.local/scripts/*.sh; do
+source "$XDG_DATA_HOME/zsh/plugins/p10k/powerlevel10k.zsh-theme" 2>/dev/null
+source "$XDG_CONFIG_HOME/zsh/.p10k.zsh" 2>/dev/null
+source "$XDG_DATA_HOME/zsh/plugins/highlight/fast-syntax-highlighting.plugin.zsh" 2>/dev/null
+source "$XDG_DATA_HOME/zsh/plugins/autocomplete/zsh-autocomplete.plugin.zsh" 2>/dev/null
+source "$XDG_DATA_HOME/zsh/plugins/autosuggest/zsh-autosuggestions.zsh" 2>/dev/null
+source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
+
+[ -f "$XDG_CONFIG_HOME/custom" ] && echo "#!/bin/sh" > "$XDG_CONFIG_HOME/zsh/custom"
+source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
+
+for custom_scripts in "$XDG_DATA_HOME/dotfiles/scripts/*.sh"; do
     source "$custom_scripts"
 done
 
-# pfetch cuz it looks cool
 if command -v pfetch &> /dev/null; then
     pfetch
 fi
