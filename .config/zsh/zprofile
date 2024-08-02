@@ -11,8 +11,14 @@ export TERMINAL_PROG="alacritty"
 export BROWSER="brave"
 
 # Configs
+# zsh
 export ZDOTDIR=$HOME/.config/zsh
-export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+export HISTSIZE=10000000
+export SAVEHIST=10000000
+# pfetch
+export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
+# golang
 export GOPATH="$HOME/.local/share/go"
 export GOMODCACHE="$HOME/.cache/go/mod"

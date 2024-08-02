@@ -37,34 +37,25 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
-# History in cache directory
-HISTSIZE=10000000
-SAVEHIST=10000000
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 # Fuzzy Finder
 eval "$(fzf --zsh)"
+# Caching folder
+[ -f "$HOME/.local/cache/zsh" ] && mkdir -p "$HOME/.local/cache/zsh"
 
 # SOURCING
 # Add custom run commands that wouldn't push to public repo
-ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-ZSH_AUTOCOMPLETE_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autocomplete.plugin.zsh"
-ZSH_AUTOSUGGESTIONS_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-ALIASRC_PATH="$HOME/.config/zsh/alias"
-CUSTOMRC_PATH="$HOME/.config/zsh/custom"
-[ -f $ZSH_SYNTAX_HIGHLIGHTING_PATH ] && source $ZSH_SYNTAX_HIGHLIGHTING_PATH
-[ -f $ZSH_AUTOCOMPLETE_PATH ] && source $ZSH_AUTOCOMPLETE_PATH
-[ -f $ZSH_AUTOSUGGESTIONS_PATH ] && source $ZSH_AUTOSUGGESTIONS_PATH
-[ -f $CUSTOMRC_PATH ] && source $CUSTOMRC_PATH
-[ -f $ALIASRC_PATH ] && source $ALIASRC_PATH
+source "$HOME/.local/plugin/p10k/powerlevel10k.zsh-theme" 2>/dev/null
+source "$HOME/.config/zsh/.p10k.zsh" 2>/dev/null
+source "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh" 2>/dev/null
+source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autocomplete.plugin.zsh" 2>/dev/null
+source "$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" 2>/dev/null
+source "$HOME/.config/zsh/alias" 2>/dev/null
+source "$HOME/.config/zsh/custom" 2>/dev/null
 for custom_scripts in $HOME/.local/scripts/*.sh; do
     source "$custom_scripts"
 done
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh
-source $HOME/.local/plugin/p10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# PFetch cuz it looks cool
+# pfetch cuz it looks cool
 if command -v pfetch &> /dev/null; then
     pfetch
 fi

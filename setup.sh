@@ -10,17 +10,17 @@ DOTFILES_DIR="$HOME/.dotfiles"
 echo "Tatsu bootstraping script is running, it will ask for root permission for some process..."
 
 # Installing packages
-if type pacman >/dev/null; then
+if command -v pacman &> /dev/null; then
   curl -s $PACMAN_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
 fi
-if type brew >/dev/null; then
+if command -v brew &> /dev/null; then
   brew update && brew upgrade
   curl -s $HOMEBREW_LIST | tail -n +2 | cut -d ',' -f1 | xargs brew install
 fi
 
 
 # Setup new shell
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.local/share/zsh/plugins/p10k"
 git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$HOME/.local/share/zsh/plugins/fast-syntax-highlighting"
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$HOME/.local/share/zsh/plugins/zsh-autosuggestions"
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git "$HOME/.local/share/zsh/plugins/zsh-autocomplete" 
