@@ -1,6 +1,10 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -52,7 +56,7 @@ source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
 [ -f "$XDG_CONFIG_HOME/custom" ] && echo "#!/bin/sh" > "$XDG_CONFIG_HOME/zsh/custom"
 source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
 
-for custom_scripts in $XDG_DATA_HOME/dotfiles/scripts/*.sh; do
+for custom_scripts in "$XDG_DATA_HOME/dotfiles/scripts/*.sh"; do
     source "$custom_scripts"
 done
 
