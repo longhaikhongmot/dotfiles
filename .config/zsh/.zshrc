@@ -1,7 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -13,22 +12,10 @@ stty stop undef > /dev/null 2>&1 # Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
 # TWEAKS
-# Basic auto/tab complete
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots) # Include hidden files.
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=50
 bindkey -M viins 'jj' vi-cmd-mode
-# Use vim keys in tab complete menu
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 # Change cursor shape for different vi modes
 function zle-keymap-select () {
     case $KEYMAP in
@@ -60,11 +47,12 @@ eval "$(fzf --zsh)"
 # SOURCING
 # Add custom run commands that wouldn't push to public repo
 ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.local/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+ZSH_AUTOCOMPLETE_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autocomplete.plugin.zsh"
 ZSH_AUTOSUGGESTIONS_PATH="$HOME/.local/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ALIASRC_PATH="$HOME/.config/zsh/alias"
 CUSTOMRC_PATH="$HOME/.config/zsh/custom"
-
 [ -f $ZSH_SYNTAX_HIGHLIGHTING_PATH ] && source $ZSH_SYNTAX_HIGHLIGHTING_PATH
+[ -f $ZSH_AUTOCOMPLETE_PATH ] && source $ZSH_AUTOCOMPLETE_PATH
 [ -f $ZSH_AUTOSUGGESTIONS_PATH ] && source $ZSH_AUTOSUGGESTIONS_PATH
 [ -f $CUSTOMRC_PATH ] && source $CUSTOMRC_PATH
 [ -f $ALIASRC_PATH ] && source $ALIASRC_PATH
