@@ -1,3 +1,4 @@
 Package Name, Description
 neovim,Text editor
 lf,File manager
+fzf,Fuzzy Finder
