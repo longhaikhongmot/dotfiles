@@ -41,6 +41,10 @@ bindkey -M visual '^[[P' vi-delete
 # Fuzzy Finder
 eval "$(fzf --zsh)"
 
+# PROGRAM CONFIGS
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # SOURCING
 source "$XDG_DATA_HOME/zsh/plugins/p10k/powerlevel10k.zsh-theme" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/.p10k.zsh" 2>/dev/null
