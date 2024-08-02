@@ -25,7 +25,7 @@ fi
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$XDG_DATA_HOME/zsh/plugins/p10k"
 git clone --depth=1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git "$XDG_DATA_HOME/zsh/plugins/highlight"
 git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git "$XDG_DATA_HOME/zsh/plugins/autocomplete" 
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$XDG_DATA_HOME/zsh/plugins/autosuggestion"
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$XDG_DATA_HOME/zsh/plugins/autosuggest"
 sudo chsh -s $(which zsh) $(whoami)
 
 # Setup the dotfiles
