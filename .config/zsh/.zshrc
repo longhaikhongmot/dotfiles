@@ -49,7 +49,6 @@ eval "$(pyenv init -)"
 source "$XDG_DATA_HOME/zsh/plugins/p10k/powerlevel10k.zsh-theme" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/.p10k.zsh" 2>/dev/null
 source "$XDG_DATA_HOME/zsh/plugins/highlight/fast-syntax-highlighting.plugin.zsh" 2>/dev/null
-source "$XDG_DATA_HOME/zsh/plugins/autocomplete/zsh-autocomplete.plugin.zsh" 2>/dev/null
 source "$XDG_DATA_HOME/zsh/plugins/autosuggest/zsh-autosuggestions.zsh" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
