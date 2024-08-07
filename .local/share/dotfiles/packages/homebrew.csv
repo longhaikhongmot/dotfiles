@@ -7,3 +7,5 @@ pfetch-rs,pfetch
 koekeishiya/formulae/yabai,Window manager
 koekeishiya/formulae/skhd,Window manager hotkey
 pyenv,Python Version Management
+iproute2mac,iproute2
+watch,Watch command
