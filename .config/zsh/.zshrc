@@ -44,6 +44,7 @@ eval "$(fzf --zsh)"
 # PROGRAM CONFIGS
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # SOURCING
 source "$XDG_DATA_HOME/zsh/plugins/p10k/powerlevel10k.zsh-theme" 2>/dev/null
