@@ -70,6 +70,10 @@ gcf() {
         git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
+wkgp() {
+    watch -n 1 "kubectl get pods -A | grep $1"
+}
+
 # Key binds
 bindkey -s "^B" "gcf^M" 
 bindkey -s "^F" "lfcd^M"
