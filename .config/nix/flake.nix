@@ -70,7 +70,7 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#pro
+    # $ darwin-rebuild build --flake ~/.config/nix/#pro
     darwinConfigurations."pro" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
