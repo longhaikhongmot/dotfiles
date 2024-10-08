@@ -13,13 +13,11 @@ DOTFILES_DIR="$HOME/.dotfiles"
 echo "Tatsu bootstraping script is running, it will ask for root permission for some process..."
 
 # Installing packages
-if command -v pacman &> /dev/null; then
-  curl -s $PACMAN_LIST | tail -n +2 | cut -d ',' -f1 | xargs sudo pacman -Syu --noconfirm
+nixos_install_command="sh <(curl -L https://nixos.org/nix/install)"
+if [ "$OS" = "Linux" ]; then
+  nixos_install_command="$nixos_install_command --daemon"
 fi
-if command -v brew &> /dev/null; then
-  brew update && brew upgrade
-  curl -s $HOMEBREW_LIST | tail -n +2 | cut -d ',' -f1 | xargs brew install
-fi
+$nixos_install_command
 
 # Setup new shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$XDG_DATA_HOME/zsh/plugins/p10k"

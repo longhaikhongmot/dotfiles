@@ -48,7 +48,7 @@ source "$XDG_DATA_HOME/zsh/plugins/highlight/fast-syntax-highlighting.plugin.zsh
 source "$XDG_DATA_HOME/zsh/plugins/autosuggest/zsh-autosuggestions.zsh" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
-for f in $XDG_DATA_HOME/dotfiles/scripts/*; do source $f; done
+for script in $XDG_DATA_HOME/scripts/*; do source $script; done
 
 if command -v pfetch &> /dev/null; then
     pfetch
