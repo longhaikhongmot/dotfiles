@@ -1,0 +1,7 @@
+#!/bin/sh
+
+nixrebuild() {
+    if [ "$OS" = "Darwin" ]; then
+        darwin-rebuild build --flake ~/.config/nix#mac
+    fi
+}

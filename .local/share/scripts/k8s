@@ -1,0 +1,5 @@
+#!/bin/sh
+
+wkgp() {
+    watch -n 1 "kubectl get pods -A | grep $1"
+}
