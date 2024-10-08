@@ -77,8 +77,8 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake ~/.config/nix/#pro
-    darwinConfigurations."pro" = nix-darwin.lib.darwinSystem {
+    # $ darwin-rebuild build --flake ~/.config/nix/#mac
+    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
         nix-homebrew.darwinModules.nix-homebrew
@@ -93,6 +93,6 @@
     };
 
     # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."pro".pkgs;
+    darwinPackages = self.darwinConfigurations."mac".pkgs;
   };
 }
