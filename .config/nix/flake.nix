@@ -45,6 +45,9 @@
           "watch"
           "iproute2mac"
         ];
+        casks = [
+          "font-hack-nerd-font"
+        ];
         onActivation.cleanup = "zap";
         onActivation.upgrade = true;
         onActivation.autoUpdate = true;
