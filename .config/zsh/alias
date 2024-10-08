@@ -74,6 +74,12 @@ wkgp() {
     watch -n 1 "kubectl get pods -A | grep $1"
 }
 
+nixrebuild() {
+    if [ "$OS" = "Darwin" ]; then
+        darwin-rebuild build --flake ~/.config/nix#mac
+    fi
+}
+
 # Key binds
 bindkey -s "^B" "gcf^M" 
 bindkey -s "^F" "lfcd^M"
