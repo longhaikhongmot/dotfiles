@@ -17,6 +17,9 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
+        zsh-powerlevel10k
+        zsh-fast-syntax-highlighting
+        zsh-autosuggestions
         neovim
         pfetch-rs
         htop
@@ -33,10 +36,6 @@
         tldr
         jq
         yq
-      ];
-
-      fonts.packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Hack" ]; })
       ];
 
       homebrew = {
@@ -62,6 +61,11 @@
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
+      programs.zsh.promptInit = ''
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      '';
       # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
