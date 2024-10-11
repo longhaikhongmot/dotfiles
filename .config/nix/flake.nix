@@ -31,10 +31,6 @@
         kubectx
         kubernetes-helm
         argocd
-        go
-        nodejs
-        python312
-        python312Packages.pip
         tldr
         jq
         yq
