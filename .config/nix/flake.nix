@@ -33,6 +33,7 @@
         argocd
         go
         nodejs
+        python3
         tldr
         jq
         yq
