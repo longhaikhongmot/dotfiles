@@ -33,7 +33,8 @@
         argocd
         go
         nodejs
-        python3
+        python312
+        python312Packages.pip
         tldr
         jq
         yq
