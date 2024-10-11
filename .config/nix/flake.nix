@@ -30,6 +30,7 @@
         kubectl
         kubectx
         kubernetes-helm
+        python312
         argocd
         tldr
         jq
