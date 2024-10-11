@@ -46,6 +46,7 @@
         ];
         casks = [
           "font-hack-nerd-font"
+          "calibre"
         ];
         onActivation.cleanup = "zap";
         onActivation.upgrade = true;
