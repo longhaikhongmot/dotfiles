@@ -31,6 +31,7 @@
         kubectx
         kubernetes-helm
         python312
+        gettext
         argocd
         tldr
         jq
