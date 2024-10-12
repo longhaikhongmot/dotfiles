@@ -34,9 +34,9 @@
     ...
   }: let
     username = "longnguyen23";
-    useremail = "longnguyen23@onemount.com";
+    useremail = "long.nguyen23@onemount.com";
     system = "x86_64-darwin"; # aarch64-darwin or x86_64-darwin
-    hostname = "macbook";
+    hostname = "mac";
 
     specialArgs =
       inputs
@@ -44,7 +44,7 @@
         inherit username useremail hostname;
       };
   in {
-    darwinConfigurations."mac" = darwin.lib.darwinSystem {
+    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
       inherit system;
       # inherit specialArgs;
       modules = [
