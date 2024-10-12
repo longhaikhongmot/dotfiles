@@ -14,27 +14,8 @@
   # But on macOS, it's less stable than homebrew.
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
-  environment.systemPackages = with pkgs; [
-    zsh-powerlevel10k
-    zsh-fast-syntax-highlighting
-    zsh-autosuggestions
-    neovim
-    pfetch-rs
-    htop
-    tmux
-    fzf
-    lf
-    terraform
-    kubectl
-    kubectx
-    kubernetes-helm
-    (google-cloud-sdk.withExtraComponents [
-      google-cloud-sdk.components.gke-gcloud-auth-plugin
-    ])
-    argocd
-    tldr
-  ];
-  environment.variables.EDITOR = "nvim";
+  # environment.systemPackages = with pkgs; [
+  # ];
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   # 
