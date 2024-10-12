@@ -30,8 +30,11 @@
         kubectl
         kubectx
         kubernetes-helm
-        python312
-        gettext
+        google-cloud-sdk
+        (google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.kubectl
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ])
         argocd
         tldr
         jq
