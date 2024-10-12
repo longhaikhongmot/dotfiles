@@ -44,7 +44,7 @@
         inherit username useremail hostname;
       };
   in {
-    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+    darwinConfigurations."mac" = darwin.lib.darwinSystem {
       inherit system;
       # inherit specialArgs;
       modules = [
