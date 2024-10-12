@@ -1,104 +1,68 @@
 {
   description = "Long flakes";
 
+  # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
+  # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
+
+    # home-manager, used for managing user configuration
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      # The `follows` keyword in inputs is used for inheritance.
+      # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
+      # to avoid problems caused by different versions of nixpkgs dependencies.
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, nix-homebrew }:
-  let
-    configuration = { pkgs, ... }: {
-      # Install unfree packages
-      nixpkgs.config.allowUnfree = true;
+  # The `outputs` function will return all the build results of the flake.
+  # A flake can have many use cases and different types of outputs,
+  # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
+  # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
+  # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    darwin,
+    home-manager,
+    ...
+  }: let
+    username = "longnguyen23";
+    useremail = "longnguyen23@onemount.com";
+    system = "x86_64-darwin"; # aarch64-darwin or x86_64-darwin
+    hostname = "macbook";
 
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages = with pkgs; [
-        zsh-powerlevel10k
-        zsh-fast-syntax-highlighting
-        zsh-autosuggestions
-        neovim
-        pfetch-rs
-        htop
-        tmux
-        fzf
-        lf
-        terraform
-        kubectl
-        kubectx
-        kubernetes-helm
-        (google-cloud-sdk.withExtraComponents [
-          google-cloud-sdk.components.gke-gcloud-auth-plugin
-        ])
-        argocd
-        tldr
-        jq
-        yq
-      ];
-
-      homebrew = {
-        enable = true;
-        brews = [
-          "watch"
-          "iproute2mac"
-        ];
-        casks = [
-          "font-hack-nerd-font"
-          "calibre"
-        ];
-        onActivation.cleanup = "zap";
-        onActivation.upgrade = true;
-        onActivation.autoUpdate = true;
+    specialArgs =
+      inputs
+      // {
+        inherit username useremail hostname;
       };
-
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
-      programs.zsh.promptInit = ''
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
-        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      '';
-      # programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "x86_64-darwin";
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake ~/.config/nix/#mac
-    darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
+  in {
+    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+      inherit system;
+      # inherit specialArgs;
       modules = [
-        configuration
-        nix-homebrew.darwinModules.nix-homebrew
+        ./modules/core
+        ./hosts/mac
+
+        # home manager
+        home-manager.darwinModules.home-manager
         {
-          nix-homebrew = {
-            user = "longnguyen23";
-            enable = true;
-            autoMigrate = true;
-          };
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./modules/home-manager;
         }
       ];
     };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."mac".pkgs;
+    # nix code formatter
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
