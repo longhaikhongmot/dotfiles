@@ -29,8 +29,6 @@
     # devops tools
     terraform
     kubectl
-    kubectxterraform
-    kubectl
     kubectx
     kubernetes-helm
     (google-cloud-sdk.withExtraComponents [
