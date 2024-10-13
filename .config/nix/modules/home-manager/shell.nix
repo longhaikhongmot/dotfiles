@@ -5,14 +5,6 @@
     enable = true;
     enableCompletion = true;
     initExtra = ''
-      # Source custom files
-      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-      # Initialization code that may require console input (password prompts, [y/n]
-      # confirmations, etc.) must go above this block; everything else may go below.
-      if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-        source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
-      fi
-
       # Vi mode
       bindkey -v
       bindkey -M viins 'jj' vi-cmd-mode
