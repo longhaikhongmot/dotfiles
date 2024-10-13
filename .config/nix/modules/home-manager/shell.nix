@@ -5,50 +5,7 @@
     enable = true;
     enableCompletion = true;
     initExtra = ''
-      # Vi mode
-      bindkey -v
-      bindkey -M viins 'jj' vi-cmd-mode
-
-      # Change cursor shape for different vi modes
-      function zle-keymap-select() {
-        case $KEYMAP in
-          vicmd) echo -ne '\e[1 q';;      # block
-          viins|main) echo -ne '\e[5 q';; # beam
-        esac
-      }
-      zle -N zle-keymap-select
-      zle-line-init() {
-        zle -K viins
-        echo -ne "\e[5 q"
-      }
-      zle -N zle-line-init
-      echo -ne '\e[5 q'
-      preexec() { echo -ne '\e[5 q' ;}
-
-      # Edit line in vim with ctrl-e
-      autoload edit-command-line; zle -N edit-command-line
-      bindkey '^e' edit-command-line
-      bindkey -M vicmd '^[[P' vi-delete-char
-      bindkey -M vicmd '^e' edit-command-line
-      bindkey -M visual '^[[P' vi-delete
-
-      # Fuzzy Finder
-      ${pkgs.fzf}/bin/fzf --zsh
-
-      # Load custom scripts
-      for script in $XDG_DATA_HOME/scripts/*; do source $script; done
-      # Load Powerlevel10k theme
-      source "$XDG_CONFIG_HOME/zsh/.p10k.zsh"
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-      # Load plugins
-      source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
-      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-      # Display pfetch if available
-      if command -v pfetch &> /dev/null; then
-        pfetch
-      fi
+      source "$XDG_CONFIG_HOME/zsh/.zshrc"
     '';
     shellAliases = {
       dot = "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
@@ -102,26 +59,7 @@
       kevent="kubectl get events";
     };
     envExtra = ''
-      export OS=$(uname -s)
-      export EDITOR="nvim"
-
-      export XDG_CONFIG_HOME="$HOME/.config"
-      export XDG_CACHE_HOME="$HOME/.cache"
-      export XDG_DATA_HOME="$HOME/.local/share"
-      export XDG_STATE_HOME="$HOME/.local/state"
-
-      [ -d "$HOME/.local/bin" ] || mkdir -p "$HOME/.local/bin"
-      export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
-      unsetopt PROMPT_SP 2>/dev/null
-
-      [ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
-      export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-      export HISTFILE="$XDG_CACHE_HOME/zsh/history"
-      export HISTSIZE=10000000
-      export SAVEHIST=10000000
-      export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
-      export KEYTIMEOUT=50
-      export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
+      source "$XDG_CONFIG_HOME/zsh/env"
     '';
   };
 }
