@@ -21,7 +21,6 @@
     zsh-autosuggestions
 
 
-
     # archives
     zip
     xz
@@ -40,6 +39,7 @@
     fzf # A command-line fuzzy finder
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
+    nixpkgs-fmt # nix code formatter
 
     # devops tools
     terraform
