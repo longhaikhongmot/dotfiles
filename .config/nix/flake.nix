@@ -35,7 +35,7 @@
     }:
     let
       username = "longnguyen23";
-      useremail = "long.nguyen23@onemount.com";
+      # useremail = "";
       system = "x86_64-darwin"; # aarch64-darwin or x86_64-darwin
       hostname = "mac";
 
