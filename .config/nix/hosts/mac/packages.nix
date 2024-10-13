@@ -15,12 +15,6 @@
   #
   # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
-    # zsh
-    zsh-powerlevel10k
-    zsh-fast-syntax-highlighting
-    zsh-autosuggestions
-
-
     # archives
     zip
     xz

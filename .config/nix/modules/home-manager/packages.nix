@@ -1,15 +1,8 @@
 {pkgs, ...}: {
-  # home.packages = with pkgs; [
-    
-  # ];
-
-  # programs = {
-    
-    # modern vim
-    # neovim = {
-    #   enable = true;
-    #   defaultEditor = true;
-    #   vimAlias = true;
-    # };
-  # };
+  home.packages = with pkgs; [
+    # zsh
+    zsh-powerlevel10k
+    zsh-fast-syntax-highlighting
+    zsh-autosuggestions
+  ];
 }

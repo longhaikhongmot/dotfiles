@@ -6,6 +6,12 @@
     enableCompletion = true;
     initExtra = ''
       source "$XDG_CONFIG_HOME/zsh/.zshrc"
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      if command -v pfetch &> /dev/null; then
+          pfetch
+      fi
     '';
     shellAliases = {
       dot = "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
