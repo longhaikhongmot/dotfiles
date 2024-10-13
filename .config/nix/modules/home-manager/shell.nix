@@ -6,9 +6,9 @@
     enableCompletion = true;
     initExtra = ''
       # Source custom files
-      source ${./zsh/env}
-      source ${./zsh/alias}
-      source ${./zsh/.p10k.zsh}
+      source "./zsh/env"
+      source "./zsh/alias"
+      source "./zsh/.p10k.zsh"
 
       # Load Powerlevel10k theme
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
