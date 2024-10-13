@@ -6,16 +6,12 @@
     enableCompletion = true;
     initExtra = ''
       # Source custom files
-      source "./zsh/env"
-      source "./zsh/alias"
-      source "./zsh/.p10k.zsh"
-
-      # Load Powerlevel10k theme
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-      # Load plugins
-      source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
-      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+      # Initialization code that may require console input (password prompts, [y/n]
+      # confirmations, etc.) must go above this block; everything else may go below.
+      if [[ -r "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
+      fi
 
       # Vi mode
       bindkey -v
@@ -49,6 +45,13 @@
 
       # Load custom scripts
       for script in $XDG_DATA_HOME/scripts/*; do source $script; done
+      # Load Powerlevel10k theme
+      source "$XDG_CONFIG_HOME/zsh/.p10k.zsh"
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+
+      # Load plugins
+      source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
       # Display pfetch if available
       if command -v pfetch &> /dev/null; then
