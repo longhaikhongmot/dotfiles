@@ -17,15 +17,27 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
-        zsh-powerlevel10k
-        zsh-fast-syntax-highlighting
-        zsh-autosuggestions
+        # archives
+        zip
+        xz
+        unzip
+        p7zip
+
+        # utils
         neovim
         pfetch-rs
         htop
         tmux
-        fzf
         lf
+        ripgrep # recursively searches directories for a regex pattern
+        jq # A lightweight and flexible command-line JSON processor
+        yq # yaml processer
+        fzf # A command-line fuzzy finder
+        socat # replacement of openbsd-netcat
+        nmap # A utility for network discovery and security auditing
+        nixpkgs-fmt # nix code formatter
+
+        # devops tools
         terraform
         kubectl
         kubectx
@@ -34,20 +46,45 @@
           google-cloud-sdk.components.gke-gcloud-auth-plugin
         ])
         argocd
+
+        # misc
+        file
+        which
+        tree
+        gnused
+        gnutar
+        gawk
+        zstd
+        gnupg
         tldr
-        jq
-        yq
       ];
 
       homebrew = {
         enable = true;
+        taps = [
+          "homebrew/services"
+        ];
+
+        # `brew install`
+        # TODO Feel free to add your favorite apps here.
         brews = [
+          "wget" # download tool
+          "curl" # no not install curl via nixpkgs, it's not working well on macOS!
           "watch"
           "iproute2mac"
         ];
+
+        # `brew install --cask`
+        # TODO Feel free to add your favorite apps here.
         casks = [
-          "font-hack-nerd-font"
+          "firefox"
+          "visual-studio-code"
+          "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+          "stats" # beautiful system monitor
           "calibre"
+
+          # Development
+          "insomnia" # REST client
         ];
         onActivation.cleanup = "zap";
         onActivation.upgrade = true;
