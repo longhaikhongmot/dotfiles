@@ -27,7 +27,6 @@
           neovim
           pfetch-rs
           htop
-          tmux
           lf
           ripgrep # recursively searches directories for a regex pattern
           jq # A lightweight and flexible command-line JSON processor
@@ -72,6 +71,7 @@
             "curl" # no not install curl via nixpkgs, it's not working well on macOS!
             "watch"
             "iproute2mac"
+            "tmux"
           ];
 
           # `brew install --cask`
