@@ -22,5 +22,7 @@ export HISTSIZE=10000000
 export SAVEHIST=10000000
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 export KEYTIMEOUT=50
+# brew
+export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/packages/Brewfile"
 # pfetch
 export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
