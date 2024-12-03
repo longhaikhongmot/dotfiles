@@ -42,11 +42,12 @@ bindkey -M visual '^[[P' vi-delete
 eval "$(fzf --zsh)"
 
 # SOURCING
+if [[ "$OS" == "Darwin" ]]; then
+    source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
+    source $HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+    source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 source "$XDG_CONFIG_HOME/zsh/.p10k.zsh" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/alias" 2>/dev/null
 source "$XDG_CONFIG_HOME/zsh/custom" 2>/dev/null
 for script in $XDG_DATA_HOME/scripts/*; do source $script; done
-
-if command -v pfetch &> /dev/null; then
-    pfetch
-fi
