@@ -26,3 +26,5 @@ export KEYTIMEOUT=50
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/package/Brewfile"
 # pfetch
 export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
+# pyenv
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"

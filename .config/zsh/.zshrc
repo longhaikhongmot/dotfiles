@@ -41,6 +41,12 @@ bindkey -M visual '^[[P' vi-delete
 # Fuzzy Finder
 eval "$(fzf --zsh)"
 
+# PYENV
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+# FNM
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # SOURCING
 if [[ "$OS" == "Darwin" ]]; then
     source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
