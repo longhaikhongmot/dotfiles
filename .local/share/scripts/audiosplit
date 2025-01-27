@@ -2,51 +2,47 @@
 
 audiosplit() {
     # Requires ffmpeg
-    [ ! -f "$2" ] && printf "The first file should be the audio, the second should be the timecodes.\\n" && return 1
 
-    echo "Enter the audio title:"
-    read -r audio_title
+    [ ! -f "$2" ] && printf "The first file should be the audio, the second should be the timecodes.\\n" && exit
 
-    # Get a safe file name from the book
-    export_directory="$(echo "$audio_title" |
-        iconv -c -f UTF-8 -t ASCII//TRANSLIT |
-        tr -d '[:punct:]' |
-        tr '[:upper:]' '[:lower:]' |
-        tr ' ' '-' |
-        sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+    echo "Enter the album/book title:"
+    read -r booktitle
+    echo "Enter the artist/author:"
+    read -r author
+    echo "Enter the publication year:"
+    read -r year
 
-    ! mkdir -p "$export_directory" &&
+    inputaudio="$1"
+    ext="${1##*.}"
+
+    # Get a safe file name from the book.
+    escbook="$(echo "$booktitle" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+
+    ! mkdir -p "$escbook" &&
         echo "Do you have write access in this directory?" &&
         exit 1
 
-    input_timecodes="$2"
-    total_track="$(wc -l <"$input_timecodes")"
-    input_audio="$1"
-    ext="${1##*.}"
+    # Get the total number of tracks from the number of lines.
+    total="$(wc -l <"$2")"
 
-    while IFS='' read -r timecode; do
-        end_time=""
-        end_time="$(echo "$timecode" | cut -d ' ' -f1)"
+    cmd="ffmpeg -i \"$inputaudio\" -nostdin -y"
 
-        # Set the output file
-        output_file="$export_directory/$(printf "%.2d" "$track")-$safe_title.$ext"
-
-        # Run ffmpeg
-        if [ -n "$start_time" ]; then
-            ffmpeg -ss "$start_time" -to "$end_time" -i $input_audio $output_file
-            # echo "ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file"
+    while read -r x; do
+        end="$(echo "$x" | cut -d'	' -f1)"
+        file="$escbook/$(printf "%.2d" "$track")-$esctitle.$ext"
+        if [ -n "$start" ]; then
+            cmd="$cmd -metadata artist=\"$author\" -metadata title=\"$title\" -metadata album=\"$booktitle\" -metadata year=\"$year\" -metadata track=\"$track\" -metadata total=\"$total\" -ss \"$start\" -to \"$end\" -vn -c:a copy \"$file\" "
         fi
-
-        # Get the title of the track
-        title="$(echo "$timecode" | cut -d ' ' -f2-)"
-        safe_title="$(echo "$title" |
-            iconv -c -f UTF-8 -t ASCII//TRANSLIT |
-            tr -d '[:punct:]' |
-            tr '[:upper:]' '[:lower:]' |
-            tr ' ' '-' |
-            sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
-        # Set time and track number
+        title="$(echo "$x" | cut -d'	' -f2-)"
+        esctitle="$(echo "$title" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         track="$((track + 1))"
-        start_time="$end_time"
-    done <"$input_timecodes"
+        start="$end"
+    done <"$2"
+
+    # Last track must be added out of the loop.
+    file="$escbook/$(printf "%.2d" "$track")-$esctitle.$ext"
+    cmd="$cmd -metadata artist=\"$author\" -metadata title=\"$title\" -metadata album=\"$booktitle\" -metadata year=\"$year\" -metadata track=\"$track\" -ss \"$start\" -vn -c copy \"$file\""
+
+    eval "$cmd"
+
 }
