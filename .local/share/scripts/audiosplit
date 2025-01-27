@@ -27,7 +27,7 @@ audiosplit() {
         track="$((track + 1))"
         end_time="$(echo "$timecode" | cut -d ' ' -f1)"
         # Get the title of the track
-        title="$(echo "$x" | cut -d ' ' -f2-)"
+        title="$(echo "$timecode" | cut -d ' ' -f2-)"
         safe_title="$(echo "$title" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         # Set the output file
         output_file="$export_directory/$(printf "%.2d" "$track")-$safe_title.$ext"
