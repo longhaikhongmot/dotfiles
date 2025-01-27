@@ -33,7 +33,7 @@ audiosplit() {
 
         # Run ffmpeg
         if [ -n "$start_time" ]; then
-            ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file
+            ffmpeg -ss "$start_time" -to "$end_time" -i $input_audio $output_file
             # echo "ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file"
         fi
 
