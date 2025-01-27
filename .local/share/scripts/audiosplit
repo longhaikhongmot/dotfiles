@@ -23,6 +23,8 @@ audiosplit() {
     total_track="$(wc -l <"$input_timecodes")"
     input_audio="$1"
     ext="${1##*.}"
+    track=1
+    safe_title=""
 
     while read -r timecode; do
         end_time="$(echo "$timecode" | cut -d ' ' -f1)"
@@ -47,6 +49,6 @@ audiosplit() {
             sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         # Set time and track number
         track="$((track + 1))"
-        start_time="$end_time"
+        start_time=$end_time
     done <"$input_timecodes"
 }
