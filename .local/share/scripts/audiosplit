@@ -23,8 +23,6 @@ audiosplit() {
     total_track="$(wc -l <"$input_timecodes")"
     input_audio="$1"
     ext="${1##*.}"
-    track=1
-    safe_title=""
 
     while read -r timecode; do
         end_time="$(echo "$timecode" | cut -d ' ' -f1)"
@@ -36,7 +34,6 @@ audiosplit() {
             echo "Extracting track $track of $total_track: $title"
             echo "From $start_time to $end_time"
             ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file || return 1
-            echo "---"
         fi
 
         # Get the title of the track
@@ -49,6 +46,6 @@ audiosplit() {
             sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         # Set time and track number
         track="$((track + 1))"
-        start_time=$end_time
+        start_time="$(echo $end_time)"
     done <"$input_timecodes"
 }
