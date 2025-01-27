@@ -24,8 +24,12 @@ audiosplit() {
     input_audio="$1"
     ext="${1##*.}"
 
-    end_time="$(echo "$timecode" | cut -d ' ' -f1)"
     while read -r timecode; do
+        # if the first time run the loop
+        if [ -z "$start_time" ]; then
+            end_time="$(echo "$timecode" | cut -d ' ' -f1)"
+        fi
+
         # Set the output file
         output_file="$export_directory/$(printf "%.2d" "$track")-$safe_title.$ext"
 
