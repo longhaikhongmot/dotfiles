@@ -31,9 +31,7 @@ audiosplit() {
 
         # Run ffmpeg
         if [ -n "$start_time" ]; then
-            cmd="ffmpeg -i \"$input_audio\" -ss \"$start_time\" -to \"$end_time\" -c copy \"$output_file\""
-            echo "$cmd"
-            $cmd || return 1
+            ffmpeg -i "./$input_audio" -ss "$start_time" -to "$end_time" -c copy "$output_file" -y || return 1
         fi
 
         # Get the title of the track
