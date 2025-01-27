@@ -37,15 +37,15 @@ audiosplit() {
         end="$(echo "$x" | cut -d' ' -f1)"
         file="$escbook/$(printf "%.2d" "$track")-$esctitle.$ext"
         if [ -n "$start" ]; then
-            cmd="$cmd -metadata artist=\"$author\" \
-                -metadata title=\"$title\" \
-                -metadata album=\"$booktitle\" \
-                -metadata year=\"$year\" \
-                -metadata track=\"$track\" \
-                -metadata total=\"$total\" \
-                -ss \"$start\" \
-                -to \"$end\" \
-                -c:v copy -c:a libmp3lame -q:a 4 \ 
+            cmd="$cmd -metadata artist=\"$author\" \\
+                -metadata title=\"$title\" \\
+                -metadata album=\"$booktitle\" \\
+                -metadata year=\"$year\" \\
+                -metadata track=\"$track\" \\
+                -metadata total=\"$total\" \\
+                -ss \"$start\" \\
+                -to \"$end\" \\
+                -c:v copy -c:a libmp3lame -q:a 4 \\
                 \"$file\" "
         fi
         title="$(echo "$x" | cut -d' ' -f2-)"
@@ -61,13 +61,13 @@ audiosplit() {
 
     # Last track must be added out of the loop.
     file="$escbook/$(printf "%.2d" "$track")-$esctitle.$ext"
-    cmd="$cmd -metadata artist=\"$author\" \
-        -metadata title=\"$title\" \
-        -metadata album=\"$booktitle\" \
-        -metadata year=\"$year\" \
-        -metadata track=\"$track\" \
-        -ss \"$start\" \
-        -c:v copy -c:a libmp3lame -q:a 4 \
+    cmd="$cmd -metadata artist=\"$author\" \\
+        -metadata title=\"$title\" \\
+        -metadata album=\"$booktitle\" \\
+        -metadata year=\"$year\" \\
+        -metadata track=\"$track\" \\
+        -ss \"$start\" \\
+        -c:v copy -c:a libmp3lame -q:a 4 \\
         \"$file\""
 
     eval "$cmd"
