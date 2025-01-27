@@ -2,7 +2,7 @@
 
 audiosplit() {
     # Requires ffmpeg
-    [ ! -f "$2" ] && printf "The first file should be the audio, the second should be the timecodes.\\n" && exit
+    [ ! -f "$2" ] && printf "The first file should be the audio, the second should be the timecodes.\\n" && return 1
 
     echo "Enter the audio title:"
     read -r audio_title
@@ -35,7 +35,7 @@ audiosplit() {
         # Run ffmpeg
         cmd="ffmpeg -i \"$input_audio\" -ss \"$start_time\" -to \"$end_time\" -c copy \"$output_file\""
         echo "$cmd"
-        $cmd || exit 1
+        $cmd || return 1
 
         start_time="$end_time"
     done <"$input_timecodes"
