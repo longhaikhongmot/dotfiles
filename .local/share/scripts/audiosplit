@@ -8,7 +8,12 @@ audiosplit() {
     read -r audio_title
 
     # Get a safe file name from the book
-    export_directory="$(echo "$audio_title" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+    export_directory="$(echo "$audio_title" |
+        iconv -c -f UTF-8 -t ASCII//TRANSLIT |
+        tr -d '[:punct:]' |
+        tr '[:upper:]' '[:lower:]'|
+        tr ' ' '-' |
+        sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
 
     ! mkdir -p "$export_directory" &&
         echo "Do you have write access in this directory?" &&
@@ -23,20 +28,27 @@ audiosplit() {
     start_time="00:00:00"
 
     while read -r timecode; do
-        # Set time and track number
-        track="$((track + 1))"
         end_time="$(echo "$timecode" | cut -d ' ' -f1)"
-        # Get the title of the track
-        title="$(echo "$timecode" | cut -d ' ' -f2-)"
-        safe_title="$(echo "$title" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         # Set the output file
         output_file="$export_directory/$(printf "%.2d" "$track")-$safe_title.$ext"
 
         # Run ffmpeg
-        cmd="ffmpeg -i \"$input_audio\" -ss \"$start_time\" -to \"$end_time\" -c copy \"$output_file\""
-        echo "$cmd"
-        $cmd || return 1
+        if [ -n "$start_time" ]; then
+            cmd="ffmpeg -i \"$input_audio\" -ss \"$start_time\" -to \"$end_time\" -c copy \"$output_file\""
+            echo "$cmd"
+            $cmd || return 1
+        fi
 
+        # Get the title of the track
+        title="$(echo "$timecode" | cut -d ' ' -f2-)"
+        safe_title="$(echo "$title" |
+            iconv -c -f UTF-8 -t ASCII//TRANSLIT |
+            tr -d '[:punct:]' |
+            tr '[:upper:]' '[:lower:]' |
+            tr ' ' '-' |
+            sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+        # Set time and track number
+        track="$((track + 1))"
         start_time="$end_time"
     done <"$input_timecodes"
 }
