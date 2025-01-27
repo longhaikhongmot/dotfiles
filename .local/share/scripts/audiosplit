@@ -11,7 +11,7 @@ audiosplit() {
     export_directory="$(echo "$audio_title" |
         iconv -c -f UTF-8 -t ASCII//TRANSLIT |
         tr -d '[:punct:]' |
-        tr '[:upper:]' '[:lower:]'|
+        tr '[:upper:]' '[:lower:]' |
         tr ' ' '-' |
         sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
 
@@ -25,10 +25,7 @@ audiosplit() {
     ext="${1##*.}"
 
     while read -r timecode; do
-        # if the first time run the loop
-        if [ -z "$end_time" ]; then
-            end_time="$(echo "$timecode" | cut -d ' ' -f1)"
-        fi
+        end_time="$(echo "$timecode" | cut -d ' ' -f1)"
 
         # Set the output file
         output_file="$export_directory/$(printf "%.2d" "$track")-$safe_title.$ext"
@@ -52,5 +49,5 @@ audiosplit() {
         # Set time and track number
         track="$((track + 1))"
         start_time="$end_time"
-    done < "$input_timecodes"
+    done <"$input_timecodes"
 }
