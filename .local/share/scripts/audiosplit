@@ -24,9 +24,6 @@ audiosplit() {
     input_audio="$1"
     ext="${1##*.}"
 
-    track=0
-    start_time="00:00:00"
-
     while read -r timecode; do
         end_time="$(echo "$timecode" | cut -d ' ' -f1)"
         # Set the output file
