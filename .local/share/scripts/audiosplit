@@ -13,7 +13,8 @@ audiosplit() {
     read -r year
 
     inputaudio="$1"
-    ext="${1##*.}"
+    # ext="${1##*.}"
+    ext="aac"
 
     # Get a safe file name from the book.
     escbook="$(echo "$booktitle" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
