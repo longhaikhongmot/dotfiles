@@ -26,7 +26,7 @@ audiosplit() {
 
     while read -r timecode; do
         # if the first time run the loop
-        if [ -z "$start_time" ]; then
+        if [ -z "$end_time" ]; then
             end_time="$(echo "$timecode" | cut -d ' ' -f1)"
         fi
 
@@ -51,6 +51,6 @@ audiosplit() {
             sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
         # Set time and track number
         track="$((track + 1))"
-        start_time="$$end_time"
+        start_time="$end_time"
     done < "$input_timecodes"
 }
