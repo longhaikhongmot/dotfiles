@@ -21,7 +21,7 @@ audiosplit() {
 
     input_timecodes="$2"
     total_track="$(wc -l <"$input_timecodes")"
-    input_audio="$(pwd)/$1"
+    input_audio="$1"
     ext="${1##*.}"
 
     while read -r timecode; do
@@ -31,9 +31,7 @@ audiosplit() {
 
         # Run ffmpeg
         if [ -n "$start_time" ]; then
-            cmd="ffmpeg -ss $start_time -to $end_time -i $input_audio ./$output_file"
-            echo "$cmd"
-            $cmd || return 1
+            ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file || return 1
         fi
 
         # Get the title of the track
