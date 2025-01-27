@@ -37,7 +37,8 @@ audiosplit() {
             echo $timecode
             echo "Extracting track $track of $total_track: $title"
             echo "From $start_time to $end_time"
-            ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file || return 1
+            # ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file || return 1
+            echo "ffmpeg -ss $start_time -to $end_time -i $input_audio $output_file"
             echo "---"
         fi
 
