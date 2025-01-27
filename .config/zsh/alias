@@ -54,6 +54,9 @@ alias \
     ktop="kubectl top nodes" \
     kevent="kubectl get events"
 
+# Yt-dlp
+alias yta="yt-dlp -x -f 140"
+
 # Key binds
 bindkey -s "^B" "gcf^M" 
 bindkey -s "^F" "lfcd^M"
