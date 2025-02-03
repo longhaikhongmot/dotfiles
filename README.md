@@ -1,6 +1,6 @@
 # Long does dotfiles
 
-Your dotfiles are how you personalize your system.
+The dotfiles I'm using to personalize my macOS shell.
 
 ## Setup
 
@@ -10,5 +10,5 @@ Quick setup:
 - `curl`, `git` installed
 
 ```sh
-curl -s https://raw.githubusercontent.com/tatsupro/dotfiles/main/setup.sh | sh
+curl -s https://raw.githubusercontent.com/longhaikhongmot/dotfiles/main/setup.sh | sh
 ```

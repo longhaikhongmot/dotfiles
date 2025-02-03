@@ -41,6 +41,9 @@ bindkey -M visual '^[[P' vi-delete
 # Fuzzy Finder
 eval "$(fzf --zsh)"
 
+# HomeBrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # PYENV
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
