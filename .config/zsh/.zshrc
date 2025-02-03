@@ -38,11 +38,12 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
-# Fuzzy Finder
-eval "$(fzf --zsh)"
 
 # HomeBrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Fuzzy Finder
+eval "$(fzf --zsh)"
 
 # PYENV
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
