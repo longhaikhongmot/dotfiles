@@ -1325,10 +1325,10 @@
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_VISUAL_IDENTIFIER_EXPANSION='⭐'
   #   typeset -g POWERLEVEL9K_KUBECONTEXT_TEST_CONTENT_EXPANSION='> ${P9K_CONTENT} <'
   typeset -g POWERLEVEL9K_KUBECONTEXT_CLASSES=(
-      '*prod*'    PROD    # These values are examples that are unlikely
-      '*nonprod*' TEST    # to match your needs. Customize them as needed.
-      '*np*'      TEST    # to match your needs. Customize them as needed.
-      '*'         DEFAULT)
+      '*-prod*'    PROD    # These values are examples that are unlikely
+      '*-nonprod*' TEST    # to match your needs. Customize them as needed.
+      '*-np*'      TEST    # to match your needs. Customize them as needed.
+      '*'          DEFAULT)
   typeset -g POWERLEVEL9K_KUBECONTEXT_PROD_FOREGROUND=1
   typeset -g POWERLEVEL9K_KUBECONTEXT_PROD_VISUAL_IDENTIFIER_EXPANSION='🚨'
   typeset -g POWERLEVEL9K_KUBECONTEXT_PROD_CONTENT_EXPANSION='${P9K_CONTENT}'
