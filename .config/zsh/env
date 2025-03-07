@@ -28,4 +28,3 @@ export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/package/Brewfile"
 export PF_INFO="ascii title os kernel host cpu memory uptime pkgs palette"
 # pyenv
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
