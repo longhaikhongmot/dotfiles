@@ -15,3 +15,18 @@ gcf() {
             fzf -d $((2 + $(echo "$branches" | wc -l))) +m) &&
         git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
+
+gittags() {
+    local tags=("$@") # Store all arguments in an array
+    if [ ${#tags[@]} -eq 0 ]; then
+        echo "Usage: gittags <tag1> [tag2] [tag3] ..."
+        return 1
+    fi
+
+    for item in "${tags[@]}"; do
+        git push --delete origin "$item"
+        git tag -d "$item"
+        git tag "$item"
+        git push origin tag "$item"
+    done
+}

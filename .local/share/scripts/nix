@@ -1,7 +1,0 @@
-#!/bin/sh
-
-nix-switch() {
-    if [ "$OS" = "Darwin" ]; then
-        darwin-rebuild switch --flake ~/.config/nix#mac
-    fi
-}
